@@ -1,0 +1,224 @@
+
+API 
+// https://www.openbrewerydb.org/documentation/#autocomplete
+
+
+// Single Brewery
+// Get a single brewery.
+
+// https://api.openbrewerydb.org/v1/breweries/{obdb-id}
+
+// GET https://api.openbrewerydb.org/v1/breweries/b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0
+{
+    "id": "b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0",
+    "name": "MadTree Brewing 2.0",
+    "brewery_type": "regional",
+    "address_1": "5164 Kennedy Ave",
+    "address_2": null,
+    "address_3": null,
+    "city": "Cincinnati",
+    "state_province": "Ohio",
+    "postal_code": "45213",
+    "country": "United States",
+    "longitude": "-84.4137736",
+    "latitude": "39.1885752",
+    "phone": "5138368733",
+    "website_url": "http://www.madtreebrewing.com",
+    "state": "Ohio",
+    "street": "5164 Kennedy Ave"
+}
+
+// GET https://api.openbrewerydb.org/v1/breweries?per_page=3
+[
+    {
+        "id": "5128df48-79fc-4f0f-8b52-d06be54d0cec",
+        "name": "(405) Brewing Co",
+        "brewery_type": "micro",
+        "address_1": "1716 Topeka St",
+        "address_2": null,
+        "address_3": null,
+        "city": "Norman",
+        "state_province": "Oklahoma",
+        "postal_code": "73069-8224",
+        "country": "United States",
+        "longitude": "-97.46818222",
+        "latitude": "35.25738891",
+        "phone": "4058160490",
+        "website_url": "http://www.405brewing.com",
+        "state": "Oklahoma",
+        "street": "1716 Topeka St"
+    },
+    {
+        "id": "9c5a66c8-cc13-416f-a5d9-0a769c87d318",
+        "name": "(512) Brewing Co",
+        "brewery_type": "micro",
+        "address_1": "407 Radam Ln Ste F200",
+        "address_2": null,
+        "address_3": null,
+        "city": "Austin",
+        "state_province": "Texas",
+        "postal_code": "78745-1197",
+        "country": "United States",
+        "longitude": null,
+        "latitude": null,
+        "phone": "5129211545",
+        "website_url": "http://www.512brewing.com",
+        "state": "Texas",
+        "street": "407 Radam Ln Ste F200"
+    },
+    {
+        "id": "34e8c68b-6146-453f-a4b9-1f6cd99a5ada",
+        "name": "1 of Us Brewing Company",
+        "brewery_type": "micro",
+        "address_1": "8100 Washington Ave",
+        "address_2": null,
+        "address_3": null,
+        "city": "Mount Pleasant",
+        "state_province": "Wisconsin",
+        "postal_code": "53406-3920",
+        "country": "United States",
+        "longitude": "-87.88336350209435",
+        "latitude": "42.72010826899558",
+        "phone": "2624847553",
+        "website_url": "https://www.1ofusbrewing.com",
+        "state": "Wisconsin",
+        "street": "8100 Washington Ave"
+    }
+]
+
+
+// Search Breweries
+// https://api.openbrewerydb.org/v1/breweries/search?query={search}
+
+
+[
+    {
+        "id": "385a2831-a7d5-4d07-bcff-d9d3312c571c",
+        "name": "Mikkeller Brewing San Diego",
+        "brewery_type": "micro",
+        "address_1": "9366 Cabot Dr",
+        "address_2": null,
+        "address_3": null,
+        "city": "San Diego",
+        "state_province": "California",
+        "postal_code": "92126-4311",
+        "country": "United States",
+        "longitude": "-117.144171",
+        "latitude": "32.89146307",
+        "phone": null,
+        "website_url": null,
+        "state": "California",
+        "street": "9366 Cabot Dr"
+    },
+    {
+        "id": "7713be83-2ff6-4dc5-a28e-a4f629978402",
+        "name": "San Diego Brewing Co",
+        "brewery_type": "brewpub",
+        "address_1": "10450 Friars Rd Ste L",
+        "address_2": null,
+        "address_3": null,
+        "city": "San Diego",
+        "state_province": "California",
+        "postal_code": "92120-2311",
+        "country": "United States",
+        "longitude": null,
+        "latitude": null,
+        "phone": "6192842739",
+        "website_url": "http://www.sandiegobrewing.com",
+        "state": "California",
+        "street": "10450 Friars Rd Ste L"
+    },
+    {
+        "id": "28945428-2326-41b3-b2d9-97f6e8154783",
+        "name": "Gordon Biersch Brewery Restaurant - San Diego",
+        "brewery_type": "brewpub",
+        "address_1": "5010 Mission Center Rd",
+        "address_2": null,
+        "address_3": null,
+        "city": "San Diego",
+        "state_province": "California",
+        "postal_code": "92108-3211",
+        "country": "United States",
+        "longitude": "-117.1539235",
+        "latitude": "32.7740128",
+        "phone": "6196881120",
+        "website_url": "http://www.craftworksrestaurants.com",
+        "state": "California",
+        "street": "5010 Mission Center Rd"
+    }
+]
+
+
+// Autocomplete
+// Return a list of names and ids of breweries based on a search term. This endpoint is typically used for a drop-down selection.
+
+// Notes:
+
+// For the query parameter, you can use underscores or url encoding for spaces.
+// The maximum number of breweries returned is 15.
+// https://api.openbrewerydb.org/v1/breweries/autocomplete?query={search}
+
+
+// GET https://api.openbrewerydb.org/v1/breweries/autocomplete?query=san%20diego
+[
+    {
+        "id": "385a2831-a7d5-4d07-bcff-d9d3312c571c",
+        "name": "Mikkeller Brewing San Diego"
+    },
+    {
+        "id": "7713be83-2ff6-4dc5-a28e-a4f629978402",
+        "name": "San Diego Brewing Co"
+    },
+    {
+        "id": "28945428-2326-41b3-b2d9-97f6e8154783",
+        "name": "Gordon Biersch Brewery Restaurant - San Diego"
+    },
+    {
+        "id": "01b395ba-7b97-4214-a98c-365ad281d9dd",
+        "name": "G8 Development, Inc."
+    },
+    {
+        "id": "0338af09-60df-4e16-9fd6-89d3033c9cc2",
+        "name": "Deft Brewing"
+    },
+    {
+        "id": "084aeeb4-c3dd-4f83-9d43-732e9bac41d2",
+        "name": "Mike Hess Brewing - Miramar"
+    },
+    {
+        "id": "0917c834-47a2-4156-9f17-9eeeb16e7f7d",
+        "name": "Little Miss Brewing"
+    },
+    {
+        "id": "0abde004-c1ab-451f-9cb0-f7b3cce45477",
+        "name": "Second Chance Beer Company"
+    },
+    {
+        "id": "0cbb2117-5968-4d0d-a0fd-9ee7c7f53e31",
+        "name": "Ballast Point Brewing Company"
+    },
+    {
+        "id": "0e8aa3fe-40d6-4d55-8d2f-2a3348f14421",
+        "name": "Mission Brewery"
+    },
+    {
+        "id": "0f0b7b5b-b5ae-48f1-9339-5b363249da79",
+        "name": "Pizza Port Ocean Beach"
+    },
+    {
+        "id": "11074879-0fa1-4bbb-956e-d3d00a47262b",
+        "name": "Thorn Brewing Co"
+    },
+    {
+        "id": "11f16c8a-e029-4f1c-8535-d8c736df682c",
+        "name": "Helm's Brewing Company, LLC"
+    },
+    {
+        "id": "11f1fe94-506f-4117-b2b7-47346d9f094d",
+        "name": "Ocean Beach Brewery"
+    },
+    {
+        "id": "151d81b1-6d9b-4c31-80da-c8005d5e6205",
+        "name": "Citizen Brewers"
+    }
+]

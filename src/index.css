@@ -1,0 +1,10 @@
+body {
+    color: white;
+    background-color: rgb(28, 28, 28);
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
