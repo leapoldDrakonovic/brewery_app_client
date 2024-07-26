@@ -12,16 +12,16 @@ export default function FilterTags () {
 
   function removeDuplicateCityes(objects: IBrewery[]){
     const uniCityes = [...new Set(objects.map(obj => obj.city))]
-    return Array.from(uniCityes)
+    return uniCityes
   }
 
   function removeDuplicateTypes(objects: IBrewery[]) {
     const uniTypes = [...new Set(objects.map(obj => obj.brewery_type))]
-    return Array.from(uniTypes)
+    return uniTypes
   }
   function removeDuplicateStates(objects: IBrewery[]) {
     const uniStates = [...new Set(objects.map(obj => obj.state))]
-    return Array.from(uniStates)
+    return uniStates
   }
   
   const cities = data ? removeDuplicateCityes(data) : []
