@@ -1,13 +1,11 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrapper from '../../components/wrapper/Wrapper'
 import Header from '../../components/header/Header'
 import "./MainPage.css"
-import PATHES from '../../consts'
 import { useAppSelector } from '../../store/hooks/useAppSelector'
 import { selectIds } from '../../store/slices/idSlice'
 import Filter from './components/Filter'
 import { useGetBreweriesAllQuery } from '../../services/brewery_service'
-import { useDispatch } from 'react-redux'
 import { selectedFilters } from '../../store/slices/fitlerDataSlice'
 
 type Props = {}
@@ -19,7 +17,7 @@ export default function MainPage ({}: Props) {
   const [isFiltering, setIsFiltering] = useState<boolean>(false)
 
   const favIds = useAppSelector(selectIds)        
-  const {data, error, isLoading} = useGetBreweriesAllQuery("20")
+  const {data, error, isLoading} = useGetBreweriesAllQuery("1000")
   const filtersData = useAppSelector(selectedFilters)
 
 
@@ -30,7 +28,10 @@ export default function MainPage ({}: Props) {
       && 
       filtersData.type === ""
       && 
-      filtersData.city === "") {
+      filtersData.city === ""
+      &&
+      filtersData.search === ""
+      ) {
       setIsFiltering(false)
     } else {
       setIsFiltering(true)

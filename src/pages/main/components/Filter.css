@@ -21,3 +21,11 @@
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+.fitler-btn {
+    background-color: rgb(111, 111, 111);
+    border-radius: 0.25rem;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+}

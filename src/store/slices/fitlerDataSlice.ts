@@ -6,13 +6,15 @@ export interface IFilterData {
     city: string;
     state: string;
     type: string;
+    search?: string;
 }
 
 const initialState: {filterData: IFilterData} = {
   filterData: {
     city: "",
     state: "",
-    type: ""
+    type: "",
+    search: "",
   },
 };
 
@@ -34,8 +36,11 @@ const filterDataSlice = createSlice({
         state.filterData.type = action.payload;
 
     },
+    addFilterSearch: (state, action: PayloadAction<string>) => {
+        state.filterData.search = action.payload;
+    }
   },
 });
 
-export const { addFilterCity, addFilterState, addFilterType } = filterDataSlice.actions;
+export const { addFilterCity, addFilterState, addFilterType, addFilterSearch } = filterDataSlice.actions;
 export default filterDataSlice.reducer;

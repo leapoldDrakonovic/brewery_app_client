@@ -24,10 +24,13 @@ export default function Wrapper({data, isLoading, filters}: Props) {
       const matchesCity = filters.city ? brewery.city === filters.city : true;
       const matchesState = filters.state ? brewery.state === filters.state : true;
       const matchesType = filters.type ? brewery.brewery_type === filters.type : true;
+      const matchesSearch = filters.search ? brewery.name.toLowerCase() == filters.search : true
   
-      return matchesCity && matchesState && matchesType;
+      return matchesCity && matchesState && matchesType && matchesSearch;
     });
   }, []);
+
+  
   
   const filteredBreweries = filters ? filterBreweries(breweries, filters) : breweries;
  

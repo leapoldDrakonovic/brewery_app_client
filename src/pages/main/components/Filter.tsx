@@ -44,8 +44,21 @@ export default function Filter({}: Props) {
 
   }
 
+  const handleRemoveFilters = () => {
+    setSelectedCity("");
+    setSelectedState("");
+    setSelectedType("");
+    dispatch(addFilterState(""))
+    dispatch(addFilterCity(""))
+    dispatch(addFilterType(""))
+
+  }
+
   const {cities, types, states} = FilterTags()
 
+
+  // Можно сделать через запрос на сервер
+// стоит ли?
   
 
 
@@ -72,6 +85,7 @@ export default function Filter({}: Props) {
             return <option key={city} value={city}>{city}</option>
           })}
       </select>
+      <button className='fitler-btn'  onClick={handleRemoveFilters}>Remove</button>
     </div>
   )
 }
