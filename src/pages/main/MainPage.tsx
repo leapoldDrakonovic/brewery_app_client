@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import Wrapper from '../../components/wrapper/Wrapper'
 import Header from '../../components/header/Header'
 import "./MainPage.css"
@@ -6,6 +6,9 @@ import PATHES from '../../consts'
 import { useAppSelector } from '../../store/hooks/useAppSelector'
 import { selectIds } from '../../store/slices/idSlice'
 import Filter from './components/Filter'
+import { useGetBreweriesAllQuery } from '../../services/brewery_service'
+import { useDispatch } from 'react-redux'
+import { selectedFilters } from '../../store/slices/fitlerDataSlice'
 
 type Props = {}
 
@@ -13,24 +16,28 @@ type Props = {}
 export default function MainPage ({}: Props) {
 
 
+  const [isFiltering, setIsFiltering] = useState<boolean>(false)
 
-  // TODO: все в функции 
+  const favIds = useAppSelector(selectIds)        
+  const {data, error, isLoading} = useGetBreweriesAllQuery("20")
+  const filtersData = useAppSelector(selectedFilters)
 
-    
-    PATHES.URL_PER.per_page = "100"
-    const url100 = PATHES.URL_PER.url
 
-    PATHES.URL_RANDOM.size = "3"
-    const urlRandom3 = PATHES.URL_RANDOM.url
 
-    const favIds = useAppSelector(selectIds)
-        
-    PATHES.urlById.id = favIds.join(",")
-    
-    const urlIds = PATHES.urlById.url
-    console.log(urlIds);
-    
-    
+  
+  useEffect(()=>{
+    if (filtersData.city === ""
+      && 
+      filtersData.type === ""
+      && 
+      filtersData.city === "") {
+      setIsFiltering(false)
+    } else {
+      setIsFiltering(true)
+    }    
+  }, [filtersData])
+
+
         
   
     return (
@@ -39,14 +46,31 @@ export default function MainPage ({}: Props) {
         <div className='page-filter'>
           <Filter/>
         </div>
-        <h3>Favorite Breweries</h3>
-        {favIds.length === 0 && <div> No favorite</div>}
-          <Wrapper url={urlIds}/>
-        <h3>Top Breweries</h3>
-          <Wrapper url={urlRandom3}/>
-        <h3>All Breweries</h3>
-          <Wrapper url={url100}/>
+        {isFiltering ? (
+          <>
+          <h3>Filtered Data</h3>
+          <Wrapper data={data} isLoading={isLoading} filters={filtersData}/>
+          </>)
+        : (
+          <>
+        <h3>All breweries</h3>
+        <Wrapper data={data} isLoading={isLoading} filters={filtersData}/>
+        </>)
+        }
+
       </div>
     )
   
 }
+
+
+
+/*
+
+       <h3>Favorite Breweries</h3>
+        {favIds.length === 0 && <div> No favorite</div>}
+          <Wrapper data={data} isLoading={isLoading}/>
+        <h3>Top Breweries</h3>
+          <Wrapper data={data} isLoading={isLoading}/>
+
+*/

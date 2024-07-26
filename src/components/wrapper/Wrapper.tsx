@@ -1,26 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Brewery from '../brewery/Brewery'
 import IBrewery from '../../core/interfaces/IBrewery'
 import "./Wrapper.css"
-import useFetch from '../../hooks/useFetch()'
+
+import { IFilterData } from '../../store/slices/fitlerDataSlice'
+
 
 type Props = {
-  url: string
+  data: IBrewery[] | undefined,
+  error?: string,
+  isLoading: boolean,
+  filters?: IFilterData
 }
 
-export default function Wrapper({url}: Props) {
+export default function Wrapper({data, isLoading, filters}: Props) {
 
 
-  const {data, isLoading} = useFetch<IBrewery[]>(url, "GET")
- 
-  
   const breweries = Array.isArray(data) ? data : []
 
 
+  const filterBreweries = useCallback((breweries: IBrewery[], filters: IFilterData) => {
+    return breweries.filter(brewery => {
+      const matchesCity = filters.city ? brewery.city === filters.city : true;
+      const matchesState = filters.state ? brewery.state === filters.state : true;
+      const matchesType = filters.type ? brewery.brewery_type === filters.type : true;
+  
+      return matchesCity && matchesState && matchesType;
+    });
+  }, []);
+  
+  const filteredBreweries = filters ? filterBreweries(breweries, filters) : breweries;
+ 
   return (
     <div style={{display: "flex", gap: "10px", flexDirection: "column"}}>
       {isLoading && <div className='loading'>Loading</div>}
-      {breweries.map(brewery => {
+      {filteredBreweries.map(brewery => {
         return (
           <Brewery key={brewery.id} data={brewery}/>
         )
