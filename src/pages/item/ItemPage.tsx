@@ -4,6 +4,7 @@ import IBrewery from "../../core/interfaces/IBrewery";
 import Wrapper from "../../components/wrapper/Wrapper";
 import Item from "./components/Item";
 import { useGetBreweriesByCityQuery, useGetBreweryByIdQuery } from "../../services/brewery_service";
+
 type Props = {};
 
 export default function ItemPage({}: Props) {
