@@ -10,33 +10,25 @@ export default function FilterTags () {
   const {data, error, isLoading} = useGetBreweriesAllQuery("20")
 
 
-  function removeDuplicateCityes(objects: IBrewery){
-
-    const uniCityes = new Set()
-    for (const obj of objects) {
-        for (const tag in obj) {
-          if (!uniCityes.has(tag.city)) {
-            uniCityes.add(tag.city)
-          }
-        }
-    }
-    return Array.from(uniCityes) 
+  function removeDuplicateCityes(objects: IBrewery[]){
+    const uniCityes = [...new Set(objects.map(obj => obj.city))]
+    return Array.from(uniCityes)
   }
 
-  const cities = data ? removeDuplicateCityes<IBrewery>(data) : []
-    
-
-  function removeDuplicateTypes() {
-
+  function removeDuplicateTypes(objects: IBrewery[]) {
+    const uniTypes = [...new Set(objects.map(obj => obj.brewery_type))]
+    return Array.from(uniTypes)
   }
-  function removeDuplicateStates() {
+  function removeDuplicateStates(objects: IBrewery[]) {
+    const uniStates = [...new Set(objects.map(obj => obj.state))]
+    return Array.from(uniStates)
+  }
+  
+  const cities = data ? removeDuplicateCityes(data) : []
+  const types = data ? removeDuplicateTypes(data) : []
+  const states = data ? removeDuplicateStates(data) : []
 
-}
-
-
-return cities
-
-    
+return {cities, types, states }
 }
 
 

@@ -17,11 +17,6 @@ type Props = {
 export default function Filter({}: Props) {
 
 
-  const cityes = ["San Francisco", "San Diego", "Los Angeles"]
-  const types =["Micro", "Large"]
-  const state =["Idaho", "Hevada", "Indiana", "Colorado"]
-
-
   const [selectedCity, setSelectedCity] = useState<string>("")
   const [selectedState, setSelectedState] = useState<string>("")
   const [selectedType, setSelectedType] = useState<string>("")
@@ -49,8 +44,8 @@ export default function Filter({}: Props) {
 
   }
 
-  const cities = FilterTags()
-  console.log(cities);
+  const {cities, types, states} = FilterTags()
+
   
 
 
@@ -66,7 +61,7 @@ export default function Filter({}: Props) {
       <select name="state" id="state-select" value={selectedState} onChange={handleStateChange}>
       <option value="">Выберите штат</option>
 
-          {state.map(city => {
+          {states.map(city => {
             return <option key={city} value={city}>{city}</option>
           })}
 
