@@ -1,26 +1,22 @@
-import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./ItemPage.css";
-import useFetch from "../../hooks/useFetch()";
 import IBrewery from "../../core/interfaces/IBrewery";
-import PATHES from "../../consts";
 import Wrapper from "../../components/wrapper/Wrapper";
 import Item from "./components/Item";
 import { useGetBreweriesByCityQuery, useGetBreweryByIdQuery } from "../../services/brewery_service";
-import Header from "../../components/header/Header";
 type Props = {};
 
 export default function ItemPage({}: Props) {
   let { id } = useParams<{ id: string | any}>();
 
 
-  const {data, error, isLoading} = useGetBreweryByIdQuery(id)
+  const {data, isLoading} = useGetBreweryByIdQuery(id)
   const brewery = Array.isArray(data) ? data : [data];
   const item: IBrewery = brewery[0];
 
 
   const cityName = item?.city ?? ""
-  const {data: data2, error: error2, isLoading: isLoading2} = useGetBreweriesByCityQuery(cityName, {skip: cityName === ""})
+  const {data: data2, isLoading: isLoading2} = useGetBreweriesByCityQuery(cityName, {skip: cityName === ""})
 
   
 

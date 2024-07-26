@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback} from 'react'
 import Brewery from '../brewery/Brewery'
 import IBrewery from '../../core/interfaces/IBrewery'
 import "./Wrapper.css"

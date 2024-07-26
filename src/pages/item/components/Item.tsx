@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
 import IBrewery from "../../../core/interfaces/IBrewery";
-import mapboxgl from "mapbox-gl";
+// import mapboxgl from "mapbox-gl";
 import "./Item.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { AdvancedMarker, APIProvider, Map, Pin } from "@vis.gl/react-google-maps";
@@ -10,17 +9,12 @@ type Props = {
 };
 
 export default function Item({ item }: Props) {
-  const mapBoxToken =
-    "pk.eyJ1IjoiZHdlbGxlcnNjb3JwIiwiYSI6ImNsbGNiNTJudjBpb2QzZnJzOHN4ODBubXkifQ.nR4hCb09CLkRgJMkyj9U5w";
+  // const mapBoxToken =
+  //   "pk.eyJ1IjoiZHdlbGxlcnNjb3JwIiwiYSI6ImNsbGNiNTJudjBpb2QzZnJzOHN4ODBubXkifQ.nR4hCb09CLkRgJMkyj9U5w";
 
-  mapboxgl.accessToken = mapBoxToken;
+  // mapboxgl.accessToken = mapBoxToken;
 
-  const googleApiKey = ""
-
-
-
-
-  //TODO: Дописать карту
+  // const googleApiKey = ""
 
 
 

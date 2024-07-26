@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Wrapper from '../../components/wrapper/Wrapper'
 import Header from '../../components/header/Header'
 import "./MainPage.css"
 import { useAppSelector } from '../../store/hooks/useAppSelector'
-import { selectIds } from '../../store/slices/idSlice'
 import Filter from './components/Filter'
 import { useGetBreweriesAllQuery } from '../../services/brewery_service'
 import { selectedFilters } from '../../store/slices/fitlerDataSlice'
@@ -16,8 +15,8 @@ export default function MainPage ({}: Props) {
 
   const [isFiltering, setIsFiltering] = useState<boolean>(false)
 
-  const favIds = useAppSelector(selectIds)        
-  const {data, error, isLoading} = useGetBreweriesAllQuery("1000")
+  // const favIds = useAppSelector(selectIds)        
+  const {data, isLoading} = useGetBreweriesAllQuery("1000")
   const filtersData = useAppSelector(selectedFilters)
 
 

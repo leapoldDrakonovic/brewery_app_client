@@ -1,4 +1,3 @@
-import React from "react";
 import IBrewery from "../../core/interfaces/IBrewery";
 import "./Brewery.css";
 import { useDispatch } from "react-redux";

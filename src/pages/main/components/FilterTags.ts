@@ -7,7 +7,7 @@ import { useGetBreweriesAllQuery } from "../../../services/brewery_service";
 
 
 export default function FilterTags () {
-  const {data, error, isLoading} = useGetBreweriesAllQuery("20")
+  const {data} = useGetBreweriesAllQuery("20")
 
 
   function removeDuplicateCityes(objects: IBrewery[]){

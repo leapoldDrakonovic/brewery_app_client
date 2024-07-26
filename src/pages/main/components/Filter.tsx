@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import "./Filter.css"
 import { useDispatch } from 'react-redux'
 import { addFilterCity, addFilterState, addFilterType } from '../../../store/slices/fitlerDataSlice'
@@ -90,6 +90,3 @@ export default function Filter({}: Props) {
   )
 }
 
-function addType(selectedType: string): any {
-  throw new Error('Function not implemented.')
-}
