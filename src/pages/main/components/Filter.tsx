@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import "./Filter.css"
 import { useDispatch } from 'react-redux'
 import { addFilterCity, addFilterState, addFilterType } from '../../../store/slices/fitlerDataSlice'
 import FilterTags from './FilterTags'
+import FilterSearch from './FilterSearch'
 
 type Props = {
 }
 
 
-const Filter = React.memo(({}: Props) => {
+const Filter = ({}: Props) => {
   
   const [selectedCity, setSelectedCity] = useState<string>("City")
   const [selectedState, setSelectedState] = useState<string>("State")
@@ -16,28 +17,27 @@ const Filter = React.memo(({}: Props) => {
   
   const dispatch = useDispatch()
   
-  const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newCity  = event.target.value
+  const handleCityChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newCity = event.target.value
     setSelectedCity(newCity);
-    dispatch(addFilterCity(newCity))
-    
-    
-  }
+    dispatch(addFilterCity(newCity)) 
+  }, [setSelectedCity, dispatch])
   
-  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleStateChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
     const newState = event.target.value
     setSelectedState(newState);
     dispatch(addFilterState(newState))
-  }
+  }, [setSelectedState, dispatch]);
   
-  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleTypeChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
     const newType = event.target.value
     setSelectedType(newType);
     dispatch(addFilterType(newType))
     
-  }
+  }, [, setSelectedType, dispatch])
+
   
-  const handleRemoveFilters = () => {
+  const handleRemoveFilters = useCallback(() => {
     setSelectedCity("");
     setSelectedState("");
     setSelectedType("");
@@ -45,7 +45,7 @@ const Filter = React.memo(({}: Props) => {
     dispatch(addFilterCity(""))
     dispatch(addFilterType(""))
     
-  }
+  }, [dispatch, setSelectedCity, setSelectedState, setSelectedType])
 
 
   
@@ -59,6 +59,7 @@ const Filter = React.memo(({}: Props) => {
   
   return (
     <div className='fitler-container'>
+      <FilterSearch/>
       <select name="city" id="city-select" value={selectedCity} onChange={handleCityChange} >
         <option value="">All cities</option>
           {cities.map(city => {
@@ -82,7 +83,7 @@ const Filter = React.memo(({}: Props) => {
       <button className='fitler-btn'  onClick={handleRemoveFilters}>Remove</button>
     </div>
   )
-})
+}
 
 
 export default Filter

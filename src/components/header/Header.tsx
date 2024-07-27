@@ -1,22 +1,13 @@
-import React from 'react'
 import "./Header.css"
-import { useAppSelector } from '../../store/hooks/useAppSelector'
-import { selectIds } from '../../store/slices/idSlice'
 import { PiBeerSteinBold } from "react-icons/pi";
-import { BiSolidLike } from "react-icons/bi";
-import HeaderInput from './HeaderInput';
+import HeaderInput from '../../pages/main/components/FilterSearch';
 
 type Props = {}
 
-const Header = React.memo(({}: Props) => {
-
-
-
-
+const Header = ({}: Props) => {
 
   return (
     <header className='app-header'>
-        <HeaderInput/>
         <div className='app-header-logo'>
           <PiBeerSteinBold size={30} color='yellow'/>
           Y'sBD
@@ -26,6 +17,6 @@ const Header = React.memo(({}: Props) => {
         </div>
     </header>
   )
-})
+}
 
 export default Header
