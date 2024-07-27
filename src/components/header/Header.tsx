@@ -10,7 +10,6 @@ type Props = {}
 
 const Header = React.memo(({}: Props) => {
 
-  const favIds = useAppSelector(selectIds)
 
 
 
@@ -23,13 +22,7 @@ const Header = React.memo(({}: Props) => {
           Y'sBD
           <PiBeerSteinBold size={30} color='yellow'/>
         </div>
-        <div className='favorite-container'>
-            <div className='header-favorite'>
-            <BiSolidLike 
-              color='pink'
-              size={30}
-            />: {favIds.length}
-            </div>
+        <div >
         </div>
     </header>
   )

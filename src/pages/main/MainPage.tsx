@@ -52,7 +52,7 @@ export default function MainPage ({}: Props) {
         </div>
         {favIds.length > 0 && 
         <>
-        <h3>Favorites</h3>
+        <h3>Favorites: <span>{favIds.length}</span></h3>
           <Wrapper data={favData} isLoading={favIsLoading} />
           </>}
         {isFiltering ? (

@@ -5,17 +5,16 @@ import Wrapper from "../../components/wrapper/Wrapper";
 import Item from "./components/Item";
 import { useGetBreweriesByCityQuery, useGetBreweryByIdQuery } from "../../services/brewery_service";
 import Loader from "../../components/loader/Loader";
-import React from "react";
 
 type Props = {};
 
-const ItemPage = React.memo(({}: Props) => {
+const ItemPage = ({}: Props) => {
   let { id } = useParams<{ id: string | any}>();
 
 
   const {data, isLoading} = useGetBreweryByIdQuery(id)
   const brewery = Array.isArray(data) ? data : [data];
-  const item: IBrewery = brewery[0];
+  const item: IBrewery | undefined= brewery[0];
 
 
   const cityName = item?.city ?? ""
@@ -43,7 +42,5 @@ const ItemPage = React.memo(({}: Props) => {
     </div>
   );
 }
-)
-
 export default ItemPage
 // Добавить карту с меткой на ней где находится бар

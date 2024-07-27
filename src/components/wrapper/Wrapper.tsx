@@ -4,6 +4,7 @@ import IBrewery from '../../core/interfaces/IBrewery'
 import "./Wrapper.css"
 
 import { IFilterData } from '../../store/slices/fitlerDataSlice'
+import React from 'react'
 
 
 type Props = {
@@ -13,7 +14,7 @@ type Props = {
   filters?: IFilterData
 }
 
-export default function Wrapper({data, isLoading, filters}: Props) {
+const Wrapper = React.memo(({data, isLoading, filters}: Props) => {
 
 
   const breweries = Array.isArray(data) ? data : []
@@ -43,4 +44,6 @@ export default function Wrapper({data, isLoading, filters}: Props) {
         )
       })}
     </div>
-)}
+)})
+
+export default Wrapper

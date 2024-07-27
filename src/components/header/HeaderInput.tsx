@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { addFilterSearch } from "../../store/slices/fitlerDataSlice";
@@ -10,22 +10,19 @@ export default function HeaderInput({}: Props) {
     
   const dispatch = useDispatch()
 
-  const headerInput = useRef<HTMLInputElement>(null)
-  const searchBtn = useRef<HTMLButtonElement>(null)
+  const headerInput = useRef<HTMLInputElement | null>(null)
+  const searchBtn = useRef<HTMLButtonElement | null>(null)
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
   
-  const handleSearchFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newSearch = event.target.value
-    setValue(newSearch)
-    dispatch(addFilterSearch(newSearch))
-  }
+  const handleSearchFilter = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(addFilterSearch(event.target.value))
+  }, [dispatch])
 
 
-  const handleOnClick = () => {
+  const handleOnClick = useCallback(() => {
     setIsExpanded(!isExpanded);
     if (headerInput.current) {
-      if (isExpanded && value == "") {
+      if (isExpanded && headerInput.current.value == "") {
         setTimeout(()=>{
           searchBtn.current?.classList.remove('expanded');
         }, 450)
@@ -39,7 +36,7 @@ export default function HeaderInput({}: Props) {
 
       }
     }
-  };
+  }, [setIsExpanded, isExpanded, headerInput.current, searchBtn.current])
 
   return (
     <div className="app-input-container">
@@ -48,7 +45,6 @@ export default function HeaderInput({}: Props) {
       </button>
       <input
         ref={headerInput}
-        value={value}
         onChange={handleSearchFilter}
         type="text"
         placeholder="Search"
