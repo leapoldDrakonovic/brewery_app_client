@@ -1,12 +1,19 @@
 .fitler-container {
     
+    padding-left: 22%;
     width: 100%;
     display: flex;
     flex: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    overflow-x: scroll;
     margin-top: 20px;
     gap: 20px;
+    
 
+}
+
+.fitler-container::-webkit-scrollbar {
+    display: none;
 }
 
 

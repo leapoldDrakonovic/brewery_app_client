@@ -4,10 +4,12 @@ import IBrewery from "../../core/interfaces/IBrewery";
 import Wrapper from "../../components/wrapper/Wrapper";
 import Item from "./components/Item";
 import { useGetBreweriesByCityQuery, useGetBreweryByIdQuery } from "../../services/brewery_service";
+import Loader from "../../components/loader/Loader";
+import React from "react";
 
 type Props = {};
 
-export default function ItemPage({}: Props) {
+const ItemPage = React.memo(({}: Props) => {
   let { id } = useParams<{ id: string | any}>();
 
 
@@ -23,7 +25,7 @@ export default function ItemPage({}: Props) {
 
   
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader/>
   }
   
   if (!item) {
@@ -41,5 +43,7 @@ export default function ItemPage({}: Props) {
     </div>
   );
 }
+)
 
+export default ItemPage
 // Добавить карту с меткой на ней где находится бар

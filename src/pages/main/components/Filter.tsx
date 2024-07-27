@@ -10,9 +10,9 @@ type Props = {
 
 const Filter = React.memo(({}: Props) => {
   
-  const [selectedCity, setSelectedCity] = useState<string>("")
-  const [selectedState, setSelectedState] = useState<string>("")
-  const [selectedType, setSelectedType] = useState<string>("")
+  const [selectedCity, setSelectedCity] = useState<string>("City")
+  const [selectedState, setSelectedState] = useState<string>("State")
+  const [selectedType, setSelectedType] = useState<string>("Type")
   
   const dispatch = useDispatch()
   
@@ -60,13 +60,13 @@ const Filter = React.memo(({}: Props) => {
   return (
     <div className='fitler-container'>
       <select name="city" id="city-select" value={selectedCity} onChange={handleCityChange} >
-        <option value="">Выберите город</option>
+        <option value="">All cities</option>
           {cities.map(city => {
             return <option key={city} value={city}>{city}</option>
           })}
       </select>
       <select name="state" id="state-select" value={selectedState} onChange={handleStateChange}>
-      <option value="">Выберите штат</option>
+      <option value="">All states</option>
 
           {states.map(city => {
             return <option key={city} value={city}>{city}</option>
@@ -74,7 +74,7 @@ const Filter = React.memo(({}: Props) => {
 
       </select>
       <select name="type" id="type-select" value={selectedType} onChange={handleTypeChange}>
-          <option value="">Выберете тип</option>
+          <option value="">All types</option>
           {types.map(city => {
             return <option key={city} value={city}>{city}</option>
           })}

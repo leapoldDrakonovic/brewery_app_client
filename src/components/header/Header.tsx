@@ -1,12 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import "./Header.css"
 import { useAppSelector } from '../../store/hooks/useAppSelector'
 import { selectIds } from '../../store/slices/idSlice'
-import { HiOutlineSearch } from "react-icons/hi";
 import { PiBeerSteinBold } from "react-icons/pi";
 import { BiSolidLike } from "react-icons/bi";
-import { useDispatch } from 'react-redux';
-import { addFilterSearch } from '../../store/slices/fitlerDataSlice';
 import HeaderInput from './HeaderInput';
 
 type Props = {}
