@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import "./Filter.css"
 import { useDispatch } from 'react-redux'
 import { addFilterCity, addFilterState, addFilterType } from '../../../store/slices/fitlerDataSlice'

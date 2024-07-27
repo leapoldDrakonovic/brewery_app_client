@@ -1,6 +1,5 @@
 import "./Header.css"
 import { PiBeerSteinBold } from "react-icons/pi";
-import HeaderInput from '../../pages/main/components/FilterSearch';
 
 type Props = {}
 

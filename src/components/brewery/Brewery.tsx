@@ -1,8 +1,5 @@
 import IBrewery from "../../core/interfaces/IBrewery";
 import "./Brewery.css";
-import { useDispatch } from "react-redux";
-import { addId, deleteId, selectIds } from "../../store/slices/idSlice";
-import { useAppSelector } from "../../store/hooks/useAppSelector";
 
 type Props = {
   data: IBrewery;

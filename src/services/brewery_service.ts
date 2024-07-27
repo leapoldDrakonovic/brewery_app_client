@@ -12,7 +12,7 @@ export const breweryApi = createApi({
         getBreweriesByCity: builder.query<IBrewery[], string>({
             query: (city) => `/breweries?by_city=${city}&per_page=3`
         }),
-        getBreweryById: builder.query<IBrewery | IBrewery[], string | string[]>({
+        getBreweryById: builder.query<IBrewery[], string | string[]>({
             query: (ids) => `/breweries?by_ids=${ids}`
         })
     }),
