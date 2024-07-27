@@ -1,12 +1,9 @@
-// вся логика по динамическому отображению городов и типов и чего то еще
-//  Возвраащает 3 массива данных
-
 import IBrewery from "../../../core/interfaces/IBrewery";
 import { useGetBreweriesAllQuery } from "../../../services/brewery_service";
 
 
-
 export default function FilterTags () {
+
   const {data} = useGetBreweriesAllQuery("20")
 
 

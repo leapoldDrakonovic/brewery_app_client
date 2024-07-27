@@ -7,43 +7,36 @@ import FilterTags from './FilterTags'
 type Props = {
 }
 
-/*
 
-Получать сюда данные и данамически генерировать все города? Через хэш таблицы
-Причем всее это надо кэшировать поэтому реакт квери!!!!!
-
-*/
-
-export default function Filter({}: Props) {
-
-
+const Filter = React.memo(({}: Props) => {
+  
   const [selectedCity, setSelectedCity] = useState<string>("")
   const [selectedState, setSelectedState] = useState<string>("")
   const [selectedType, setSelectedType] = useState<string>("")
-
+  
   const dispatch = useDispatch()
-
+  
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newCity  = event.target.value
     setSelectedCity(newCity);
     dispatch(addFilterCity(newCity))
-
+    
     
   }
-
+  
   const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newState = event.target.value
     setSelectedState(newState);
     dispatch(addFilterState(newState))
   }
-
+  
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newType = event.target.value
     setSelectedType(newType);
     dispatch(addFilterType(newType))
-
+    
   }
-
+  
   const handleRemoveFilters = () => {
     setSelectedCity("");
     setSelectedState("");
@@ -51,18 +44,19 @@ export default function Filter({}: Props) {
     dispatch(addFilterState(""))
     dispatch(addFilterCity(""))
     dispatch(addFilterType(""))
-
+    
   }
 
-  const {cities, types, states} = FilterTags()
 
-
-  // Можно сделать через запрос на сервер
-// стоит ли?
   
-
-
-
+  const {cities, types, states} = FilterTags()
+  
+  // Можно сделать через запрос на сервер
+  // стоит ли?
+  
+  
+  
+  
   return (
     <div className='fitler-container'>
       <select name="city" id="city-select" value={selectedCity} onChange={handleCityChange} >
@@ -88,5 +82,8 @@ export default function Filter({}: Props) {
       <button className='fitler-btn'  onClick={handleRemoveFilters}>Remove</button>
     </div>
   )
-}
+})
+
+
+export default Filter
 

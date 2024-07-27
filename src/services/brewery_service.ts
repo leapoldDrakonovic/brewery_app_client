@@ -4,6 +4,7 @@ import IBrewery from "../core/interfaces/IBrewery";
 export const breweryApi = createApi({
     reducerPath: "breweryApi",
     baseQuery: fetchBaseQuery({baseUrl: "https://api.openbrewerydb.org/v1" }),
+    refetchOnReconnect: true,
     endpoints: (builder) => ({
         getBreweriesAll: builder.query<IBrewery[], string>({
             query: (perPage) => `/breweries?per_page=${perPage}`,
