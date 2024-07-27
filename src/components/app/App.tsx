@@ -6,7 +6,7 @@ type Props = {}
 
 export default function App({}: Props) {
   return (
-    <BrowserRouter basename="/brewery_app_client">
+    <BrowserRouter >
         <Routes>
           <Route path='/' element={<MainPage/>}/>
           <Route path='/brewery/:id' element={<ItemPage/>}/>

@@ -29,14 +29,6 @@
 
 }
 
-.app-input-container {
-    position: absolute;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-}
 
 .app-header-logo {
     margin: 0 auto;
@@ -67,7 +59,3 @@
     color: white;
   }
   
-  .header-input.expanded {
-    width: 200px; /* или любая желаемая ширина */
-    visibility: visible;
-  }
