@@ -3,9 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 export interface IFilterData {
-    city: string;
-    state: string;
-    type: string;
+    city: string | null;
+    state: string | null;
+    type: string | null;
     search?: string;
 }
 
@@ -25,14 +25,14 @@ const filterDataSlice = createSlice({
   name: 'filterData',
   initialState,
   reducers: {
-    addFilterCity: (state, action: PayloadAction<string>) => {
+    addFilterCity: (state, action: PayloadAction<string | null>) => {
       state.filterData.city = action.payload;
     },
-    addFilterState: (state, action: PayloadAction<string>) => {
+    addFilterState: (state, action: PayloadAction<string | null>) => {
       state.filterData.state = action.payload;
 
     },
-    addFilterType: (state, action: PayloadAction<string>) => {
+    addFilterType: (state, action: PayloadAction<string | null>) => {
         state.filterData.type = action.payload;
 
     },
