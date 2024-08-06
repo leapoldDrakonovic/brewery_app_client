@@ -17,15 +17,21 @@ const persistConfig = {
 
 
 
+
+
+// TODO: Удалить локалстор временный
 const persistedReducer = persistReducer(persistConfig, idReducer);
 const persistedFilterReduser = persistReducer(persistConfig, filterDataReducer);
+
+
+
 
 const store = configureStore({
   reducer: {
     // notificationData: notificationStateReducer,
     ids: persistedReducer,
     aligment: togglerReducer,
-    filterData: persistedFilterReduser,
+    filterData:  filterDataReducer,
     [breweryApi.reducerPath]: breweryApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

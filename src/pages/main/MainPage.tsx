@@ -23,6 +23,7 @@ export default function MainPage({}: Props) {
   // const favIds = useAppSelector(selectIds)
   const { data, isLoading } = useGetBreweriesAllQuery("200");
   const filtersData = useAppSelector(selectedFilters);
+  
   const favIds = useAppSelector(selectIds);
   const togglerData = useAppSelector(selectedAligment);
 
@@ -95,6 +96,8 @@ export default function MainPage({}: Props) {
     </div>
   );
 }
+
+// TODO: Добавить кнопку в фильтры
 
 /*
 

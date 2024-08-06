@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addFilterSearch } from "../../../../store/slices/fitlerDataSlice";
 import TextField from '@mui/material/TextField';
@@ -12,7 +12,7 @@ type Props = {};
 
 const FilterSearch = React.memo(({}: Props) =>{
 
-
+  const [inputValue, setInputValue] = useState<string>("")
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<IBrewery[]>([]);
   const loading = open && options.length === 0;
@@ -51,27 +51,14 @@ const FilterSearch = React.memo(({}: Props) =>{
 
 
 
-
-
-  const headerInput = useRef<HTMLInputElement | null>(null)
+  // TODO: Сделать типизацию
   
-  const handleSearchFilter = useCallback((event) => {
-    dispatch(addFilterSearch(event.target.value))
+  const handleSearchFilter = useCallback((event: React.SyntheticEvent<EventTarget>, value: string) => {
+    
+    setInputValue(value)
+    dispatch(addFilterSearch(value.toLowerCase()))    
   }, [dispatch])
 
-
-
-  // return (
-  //   <div className="filter-input-container">
-  //     <input
-  //       ref={headerInput}
-  //       onChange={handleSearchFilter}
-  //       type="text"
-  //       placeholder="Search"
-  //       className="main-search-input"
-  //     />
-  //   </div>
-  // );
 
 
   return (
@@ -90,6 +77,8 @@ const FilterSearch = React.memo(({}: Props) =>{
       getOptionLabel={(option) => option.name}
       options={options}
       loading={loading}
+      onInputChange={handleSearchFilter} // Capture input changes
+      inputValue={inputValue} // Co
       renderInput={(params) => (
         <TextField
           {...params}
@@ -105,6 +94,11 @@ const FilterSearch = React.memo(({}: Props) =>{
           }}
         />
       )}
+      renderOption={(props, option) => (
+        <li {...props} key={option.id}>
+          {option.name}
+        </li>
+      )} 
     />
   </div>
   )
