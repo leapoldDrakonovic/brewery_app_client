@@ -1,15 +1,37 @@
 import React from 'react'
+import FilterTags from './FilterTags'
+import Select from '@mui/joy/Select';
+import Option from '@mui/joy/Option'
 
-type Props = {}
+type TSelects = {
+ data: { 
+  handleCityChange: (event: React.SyntheticEvent | null,
+    newValue: string | null) => void,
+  handleTypeChange: (event: React.SyntheticEvent | null,
+      newValue: string | null) => void,
+  handleStateChange: (event: React.SyntheticEvent | null,
+        newValue: string | null) => void,    
+  selectedCity: string | null,
+  selectedType: string | null,
+  selectedState: string | null, }    
 
-const Selects = (props: Props) => {
+}
+
+
+
+
+
+const Selects = ({data}: TSelects) => {
+
+const {cities, types, states} = FilterTags()
+
   return (
     <>
     <Select
       multiple={false}
       defaultValue={""}
-      onChange={handleCityChange}
-      value={selectedCity}
+      onChange={data.handleCityChange}
+      value={data.selectedCity}
       placeholder={"All cities"}
       >
         {cities.map(city => {
@@ -20,8 +42,8 @@ const Selects = (props: Props) => {
       multiple={false}
       defaultValue={''}
       placeholder={'All states'}
-      onChange={handleStateChange}
-      value={selectedState}
+      onChange={data.handleStateChange}
+      value={data.selectedState}
       name="state" 
       id="state-select"
       >
@@ -33,8 +55,8 @@ const Selects = (props: Props) => {
       multiple={false}
       defaultValue={''}
       placeholder={'All types'}
-      onChange={handleTypeChange}
-      value={selectedType}
+      onChange={data.handleTypeChange}
+      value={data.selectedType}
       name="type" 
       id="type-select"
       >

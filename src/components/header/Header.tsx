@@ -10,7 +10,7 @@ const Header = React.memo(({}: Props) => {
     <header className='app-header'>
         <div className='app-header-logo'>
           <PiBeerSteinBold size={30} color='yellow'/>
-          Y'sBD
+          BB
           <PiBeerSteinBold size={30} color='yellow'/>
         </div>
         <div >

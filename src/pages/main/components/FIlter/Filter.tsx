@@ -7,6 +7,7 @@ import FilterSearch from './FilterSearch'
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
 import { useCallback } from "react"
+import Selects from './Selects'
 type Props = {
 }
 
@@ -54,55 +55,29 @@ const Filter = ({}: Props) => {
 
 
   
-  const {cities, types, states} = FilterTags()
   
   
   // Можно сделать через запрос на сервер
   // стоит ли?
   
+
   
   
   
   return (
     <div className='fitler-container'>
       <FilterSearch/>
-      <Select
-      multiple={false}
-      defaultValue={""}
-      onChange={handleCityChange}
-      value={selectedCity}
-      placeholder={"All cities"}
-      >
-        {cities.map(city => {
-            return <Option key={city} value={city}>{city}</Option>
-          })}
-      </Select>
-      <Select
-      multiple={false}
-      defaultValue={''}
-      placeholder={'All states'}
-      onChange={handleStateChange}
-      value={selectedState}
-      name="state" 
-      id="state-select"
-      >
-          {states.map(city => {
-            return <Option key={city} value={city}>{city}</Option>
-          })}
-    </Select>
-    <Select
-      multiple={false}
-      defaultValue={''}
-      placeholder={'All types'}
-      onChange={handleTypeChange}
-      value={selectedType}
-      name="type" 
-      id="type-select"
-      >
-          {types.map(city => {
-            return <Option key={city} value={city}>{city}</Option>
-          })}
-    </Select>
+      <Selects data={
+         {
+          handleCityChange,
+          handleStateChange,
+          handleTypeChange,
+          selectedCity,
+          selectedState,
+          selectedType
+
+        }
+      }/>
 
       <button className='fitler-btn'  onClick={handleRemoveFilters}>Remove</button>
     </div>

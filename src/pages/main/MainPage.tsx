@@ -12,6 +12,8 @@ import { selectedFilters } from "../../store/slices/fitlerDataSlice";
 import { selectIds } from "../../store/slices/idSlice";
 import Pagination from "@mui/material/Pagination";
 import Toggler from "./components/Toggler/Toggler";
+import { Typography } from "@mui/material";
+import { selectedAligment } from "../../store/slices/toggleBtnSlice";
 
 type Props = {};
 
@@ -22,6 +24,7 @@ export default function MainPage({}: Props) {
   const { data, isLoading } = useGetBreweriesAllQuery("200");
   const filtersData = useAppSelector(selectedFilters);
   const favIds = useAppSelector(selectIds);
+  const togglerData = useAppSelector(selectedAligment);
 
   const { data: favData, isLoading: favIsLoading } =
     useGetBreweryByIdQuery(favIds);
@@ -52,14 +55,40 @@ export default function MainPage({}: Props) {
       </div>
       {favIds.length > 0 && (
         <>
-          <h3>
+          <Typography
+            variant="h3"
+            sx={{
+              width: 100 + "%",
+              textAlign: "center",
+              margin: "20px 0",
+              fontWeight: "bold",
+            }}
+          >
             Favorites: <span>{favIds.length}</span>
-          </h3>
+          </Typography>
+
           <Wrapper data={favData} isLoading={favIsLoading} />
         </>
       )}
 
-      <h3>Breweries</h3>
+      <Typography
+        variant="h3"
+        sx={{
+          width: 100 + "%",
+          textAlign: "center",
+          margin: "50px 0 10px 0px",
+          fontWeight: "bold",
+          fontSize: "36px",
+        }}
+      >
+        {togglerData.alignment == "Brews"
+          ? "Breweries"
+          : togglerData.alignment == "Bars"
+          ? "Bars"
+          : togglerData.alignment == "Beers"
+          ? "Beers"
+          : ""}
+      </Typography>
       <Wrapper data={data} isLoading={isLoading} filters={filtersData} />
 
       <Pagination count={coutPages} color="primary" />
