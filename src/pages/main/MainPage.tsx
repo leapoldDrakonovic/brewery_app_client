@@ -17,38 +17,62 @@ import { selectedAligment } from "../../store/slices/toggleBtnSlice";
 
 type Props = {};
 
+
+interface IBreweryMeta {
+  total: string,
+  page: string,
+  per_page: string
+}
+
+
+
+// TODO: Добавить кнопку в фильтры
+// TODO: Pagination
+
+
+
+
 export default function MainPage({}: Props) {
-  const [isFiltering, setIsFiltering] = useState<boolean>(false);
 
-  // const favIds = useAppSelector(selectIds)
-  const { data, isLoading } = useGetBreweriesAllQuery("200");
-  const filtersData = useAppSelector(selectedFilters);
-  
+  // Favorites getter
   const favIds = useAppSelector(selectIds);
-  const togglerData = useAppSelector(selectedAligment);
-
   const { data: favData, isLoading: favIsLoading } =
-    useGetBreweryByIdQuery(favIds);
+  useGetBreweryByIdQuery(favIds);
+  // Filters getter
+  const filtersData = useAppSelector(selectedFilters);
+  //Filter button value getter
+  const togglerData = useAppSelector(selectedAligment);
+  
+  
+  
+  // Pagination logic
+  const [page, setPage] = useState<number>(1)
+  const [pages, setPages] = useState<number>(10)
 
-  useEffect(() => {
-    if (
-      filtersData.city === "" &&
-      filtersData.type === "" &&
-      filtersData.city === "" &&
-      filtersData.search === ""
-    ) {
-      setIsFiltering(false);
-    } else {
-      setIsFiltering(true);
-    }
-  }, [filtersData]);
+  // META API "https://api.openbrewerydb.org/v1/breweries/meta"
 
-  const coutPages = data?.length && data.length > 20 ? data.length / 20 : 1;
+  const PER_PAGE = 24
+
+
+
+  // Get data logic
+  const { data, isLoading } = useGetBreweriesAllQuery(`page=${page}&per_page=${PER_PAGE}`);
+  
+
+
+
+  // TODO: Чуть чуть не дописал, осталось вставить в пагинации каунтер и функцию
+
+  const handlePageChange = (page: number) => {
+    setPage(page) 
+    window.scroll(0,0)
+  }
+
 
   return (
     <div className="main-page">
       <Header />
-      <div className={"page-toggler"}>
+      <div className="page-toggler">
         <Toggler />
       </div>
       <div className="page-filter">
@@ -92,19 +116,17 @@ export default function MainPage({}: Props) {
       </Typography>
       <Wrapper data={data} isLoading={isLoading} filters={filtersData} />
 
-      <Pagination count={coutPages} color="primary" />
+      <Pagination 
+        count={10}
+        onChange={(event: React.ChangeEvent, page: number)=>{
+            handlePageChange(page)
+        }}
+        sx={{
+          width: "100%",
+          margin: "0 auto"
+        }}
+        />
     </div>
   );
 }
 
-// TODO: Добавить кнопку в фильтры
-
-/*
-
-       <h3>Favorite Breweries</h3>
-        {favIds.length === 0 && <div> No favorite</div>}
-          <Wrapper data={data} isLoading={isLoading}/>
-        <h3>Top Breweries</h3>
-          <Wrapper data={data} isLoading={isLoading}/>
-
-*/

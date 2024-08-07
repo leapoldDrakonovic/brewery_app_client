@@ -2,17 +2,19 @@ import * as React from 'react'
 import "./Filter.css"
 import { useDispatch } from 'react-redux'
 import { addFilterCity, addFilterState, addFilterType } from '../../../../store/slices/fitlerDataSlice'
-import FilterTags from './FilterTags'
 import FilterSearch from './FilterSearch'
-import Select from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
 import { useCallback } from "react"
 import Selects from './Selects'
+import { Button } from '@mui/material'
 type Props = {
 }
 
 
 const Filter = ({}: Props) => {
+
+
+
+  // Переписать все фильтра под сервер
   
   const [selectedCity, setSelectedCity] = React.useState<string | null>("")
   const [selectedState, setSelectedState] = React.useState<string | null>("")
@@ -52,15 +54,6 @@ const Filter = ({}: Props) => {
     dispatch(addFilterType(""))
     
   }, [dispatch, setSelectedCity, setSelectedState, setSelectedType])
-
-
-  
-  
-  
-  // Можно сделать через запрос на сервер
-  // стоит ли?
-  
-
   
   
   
@@ -79,7 +72,11 @@ const Filter = ({}: Props) => {
         }
       }/>
 
-      <button className='fitler-btn'  onClick={handleRemoveFilters}>Remove</button>
+      <Button  
+      sx={{
+        height: "50px"
+      }}
+      onClick={handleRemoveFilters}>Remove Filters</Button>
     </div>
   )
 }
