@@ -8,4 +8,3 @@
 
 
 ### View
-https://leapolddrakonovic.github.io/brewery_app_client/
