@@ -1,10 +1,10 @@
-import IBrewery from "../../../core/interfaces/IBrewery";
-import { useGetBreweriesAllQuery } from "../../../services/brewery_service";
+import IBrewery from "../../../../core/interfaces/IBrewery";
+import { useGetBreweriesAllQuery } from "../../../../services/brewery_service";
 
 
 export default function FilterTags () {
 
-  const {data} = useGetBreweriesAllQuery("20")
+  const {data} = useGetBreweriesAllQuery("200")
 
 
   function removeDuplicateCityes(objects: IBrewery[]){

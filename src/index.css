@@ -1,6 +1,10 @@
 body {
-    color: white;
-    background-color: rgb(28, 28, 28);
+    color: black;
+    background-color: rgb(247, 247, 247);
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 

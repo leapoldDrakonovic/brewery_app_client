@@ -1,0 +1,21 @@
+services:
+
+  nginx: 
+    image: nginx:stable-alpine
+    ports:
+    - "80:80"
+    depends_on:
+      - frontend
+    volumes: 
+    - "./nginx2.conf:/etc/nginx/nginx.conf"
+    networks:
+      - dev
+
+  frontend: 
+    build: 
+      contexnt: .
+    networks:
+      - dev
+
+networks:
+  dev:

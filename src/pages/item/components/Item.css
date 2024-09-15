@@ -12,17 +12,46 @@
   }
 
 
+  .item-back-navigation-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    height: 40px;
+    margin-top: 20px;
+  box-shadow: 0px 0px 5px 2px rgb(141, 141, 141, 0.3);
+
+
+    border-radius: 10px;
+  transition: 0.15s linear;
+  color: rgb(59, 135, 211);
+
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  }
+
+
+  .item-back-navigation-link:hover {
+    background-color: rgba(59, 135, 211, 0.2);
+
+  }
+
+
 .item-title {
     width: 100%;
     font-size: 30px;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
 }
 
 .item-page-container {
     border-radius: 10px;
     padding: 10px;
 
-    background-color: rgb(78, 78, 78);
+    background-color: rgb(255, 255, 255);
 
     box-shadow: 0px 0px 40px 2px rgb(141, 141, 141, 0.2);
 }
@@ -35,11 +64,14 @@
   border-radius: 8px;
   border: none;
 
-  background-color: rgb(165, 165, 165);
 
-  color: white;
+
+  box-shadow: 0px 0px 5px 2px rgb(141, 141, 141, 0.3);
+
   font-size: 18px;
   font-weight: bold;
+  background-color: transparent;
+
 
   
   outline: none;
@@ -51,6 +83,12 @@
   justify-content: center;
 
   cursor: pointer;
+  transition: 0.1s linear;
+}
+
+.add-to-favorite-btn:hover {
+  scale: 1.02;
+  
 }
 
 .add-to-favorite-btn-container {
@@ -85,11 +123,9 @@
   }
 
   .item-info-table tr:nth-child(even) {
-    background-color: rgb(78, 78, 78);
 
 }
   
   .item-info-table tr:nth-child(odd) {
-    background-color: rgb(112, 111, 111);
 
 }

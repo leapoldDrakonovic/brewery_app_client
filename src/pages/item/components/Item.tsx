@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../../store/hooks/useAppSelector";
 import { selectIds, deleteId, addId } from "../../../store/slices/idSlice";
 import React, { useCallback, useMemo } from "react";
+import { Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 type Props = {
   item: IBrewery;
@@ -37,7 +39,14 @@ const Item = React.memo(({ item }: Props) => {
   return (
     <>
       <div className="item-page-container">
-        <div className="item-title">{item.name}</div>
+        <div className="item-title">
+          
+          <Typography variant="h3" sx={{
+            fontWeight: "bold",
+          }}>
+          {item.name}
+          </Typography>
+        </div>
         <div className="item-page-map">
           <APIProvider apiKey="">
             <Map
@@ -118,6 +127,7 @@ const Item = React.memo(({ item }: Props) => {
             </tbody>
           </table>
         </div>
+        <NavLink to={"/"} className="item-back-navigation-link">Back</NavLink>
       </div>
     </>
   );
