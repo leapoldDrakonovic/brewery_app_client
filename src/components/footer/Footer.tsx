@@ -1,7 +1,6 @@
 import "./Footer.css"
-type Props = {}
 
-export default function Footer({}: Props) {
+export default function Footer() {
   return (
     <footer className='app-footer'>Footer</footer>
   )

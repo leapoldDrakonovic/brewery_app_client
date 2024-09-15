@@ -10,10 +10,9 @@ import {
 import Loader from "../../components/loader/Loader";
 import { Typography } from "@mui/material";
 
-type Props = {};
 
-const ItemPage = ({}: Props) => {
-  let { id } = useParams<{ id: string | any }>();
+const ItemPage = () => {
+  const { id } = useParams<{ id: string | any }>();
 
   const { data, isLoading } = useGetBreweryByIdQuery(id);
   const brewery = Array.isArray(data) ? data : [data];

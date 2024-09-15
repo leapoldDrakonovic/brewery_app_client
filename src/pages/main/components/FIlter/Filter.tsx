@@ -6,11 +6,10 @@ import FilterSearch from './FilterSearch'
 import { useCallback } from "react"
 import Selects from './Selects'
 import { Button } from '@mui/material'
-type Props = {
-}
 
 
-const Filter = ({}: Props) => {
+
+const Filter = () => {
 
 
 

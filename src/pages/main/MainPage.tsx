@@ -13,7 +13,6 @@ import Toggler from "./components/Toggler/Toggler";
 import { Typography } from "@mui/material";
 import { selectedAligment } from "../../store/slices/toggleBtnSlice";
 
-type Props = {};
 
 
 /* interface IBreweryMeta {
@@ -30,7 +29,7 @@ type Props = {};
 
 
 
-export default function MainPage({}: Props) {
+export default function MainPage() {
 
   // Favorites getter
   const favIds = useAppSelector(selectIds);

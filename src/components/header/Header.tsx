@@ -2,9 +2,8 @@ import React from "react";
 import "./Header.css"
 import { PiBeerSteinBold } from "react-icons/pi";
 
-type Props = {}
 
-const Header = React.memo(({}: Props) => {
+const Header = React.memo(() => {
 
   return (
     <header className='app-header'>

@@ -1,8 +1,7 @@
 import "./Loader.css"
 
-type Props = {}
 
-export default function Loader({}: Props) {
+export default function Loader() {
   return (
     <span className='loader'></span>
   )

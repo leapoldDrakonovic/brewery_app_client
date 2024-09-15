@@ -8,9 +8,8 @@ import IBrewery from "../../../../core/interfaces/IBrewery";
 import { useGetBreweriesAllQuery } from "../../../../services/brewery_service";
 
 
-type Props = {};
 
-const FilterSearch = React.memo(({}: Props) =>{
+const FilterSearch = React.memo(() =>{
 
   const [inputValue, setInputValue] = useState<string>("")
   const [open, setOpen] = useState(false);

@@ -6,7 +6,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { breweryApi } from '../services/brewery_service';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { notificationState } from './slices/notificationSlice';
 
 const persistConfig = {
   key: 'root',
@@ -21,7 +20,6 @@ const persistConfig = {
 
 // TODO: Удалить локалстор временный
 const persistedReducer = persistReducer(persistConfig, idReducer);
-const persistedFilterReduser = persistReducer(persistConfig, filterDataReducer);
 
 
 

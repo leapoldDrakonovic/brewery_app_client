@@ -1,11 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainPage from '../../pages/main/MainPage'
 import ItemPage from '../../pages/item/ItemPage'
-import Notification from '../notifiation/Notification'
 
-type Props = {}
 
-export default function App({}: Props) {
+export default function App() {
   return (
   <>
     <BrowserRouter basename='/'>
