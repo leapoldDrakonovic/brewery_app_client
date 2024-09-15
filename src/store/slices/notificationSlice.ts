@@ -1,3 +1,5 @@
+/* 
+
 // src/redux/idSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
@@ -27,3 +29,4 @@ const notificationSlice = createSlice({
 
 export const { addNotificationData } = notificationSlice.actions;
 export default notificationSlice.reducer;
+ */

@@ -56,7 +56,7 @@ const FilterSearch = React.memo(() =>{
   // TODO: Сделать типизацию
   
   const handleSearchFilter = useCallback((event: React.SyntheticEvent<EventTarget>, value: string) => {
-    
+    event.preventDefault()
     setInputValue(value)
     dispatch(addFilterSearch(value.toLowerCase()))    
   }, [dispatch])

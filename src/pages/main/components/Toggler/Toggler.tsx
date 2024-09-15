@@ -13,6 +13,7 @@ export default function Toggler() {
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string,
   ) => {
+    event.preventDefault()
     setAlignment(newAlignment);
     dispatch(updateAligment(newAlignment))    
   };

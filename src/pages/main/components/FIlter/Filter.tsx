@@ -23,6 +23,7 @@ const Filter = () => {
   
   const handleCityChange = useCallback((event: React.SyntheticEvent | null,
     newValue: string | null,) => {
+    event?.preventDefault()
     const newCity = newValue
     setSelectedCity(newCity);
     dispatch(addFilterCity(newCity)) 
@@ -30,6 +31,7 @@ const Filter = () => {
   
   const handleStateChange = useCallback((event: React.SyntheticEvent | null,
     newValue: string | null) => {
+    event?.preventDefault()
     const newState = newValue
     setSelectedState(newState);
     dispatch(addFilterState(newState))
@@ -37,6 +39,7 @@ const Filter = () => {
   
   const handleTypeChange = useCallback((event: React.SyntheticEvent | null,
     newValue: string | null) => {
+    event?.preventDefault()
     const newType = newValue
     setSelectedType(newType);
     dispatch(addFilterType(newType))
