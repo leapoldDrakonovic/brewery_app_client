@@ -26,4 +26,3 @@ todo.*
 *.sln
 *.sw?
 src/todo.md
-vite.config.ts

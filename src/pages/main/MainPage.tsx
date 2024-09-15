@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Wrapper from "../../components/wrapper/Wrapper";
 import Header from "../../components/header/Header";
 import "./MainPage.css";
@@ -10,7 +9,6 @@ import {
 } from "../../services/brewery_service";
 import { selectedFilters } from "../../store/slices/fitlerDataSlice";
 import { selectIds } from "../../store/slices/idSlice";
-import Pagination from "@mui/material/Pagination";
 import Toggler from "./components/Toggler/Toggler";
 import { Typography } from "@mui/material";
 import { selectedAligment } from "../../store/slices/toggleBtnSlice";
@@ -18,12 +16,12 @@ import { selectedAligment } from "../../store/slices/toggleBtnSlice";
 type Props = {};
 
 
-interface IBreweryMeta {
+/* interface IBreweryMeta {
   total: string,
   page: string,
   per_page: string
 }
-
+ */
 
 
 // TODO: Добавить кнопку в фильтры
@@ -45,19 +43,11 @@ export default function MainPage({}: Props) {
   
   
   
-  // Pagination logic
-  const [page, setPage] = useState<number>(1)
-  const [pages, setPages] = useState<number>(10)
 
   // META API "https://api.openbrewerydb.org/v1/breweries/meta"
 
 
   const PER_PAGE = 200
-  const total = Math.floor(8257 / 24)
-
-  useEffect(()=>{
-    setPages(total)
-  })
 
 
   // Get data logic
@@ -68,10 +58,7 @@ export default function MainPage({}: Props) {
 
   // TODO: Чуть чуть не дописал, осталось вставить в пагинации каунтер и функцию
 
-  const handlePageChange = (page: number) => {
-    setPage(page) 
-    window.scroll(0,0)
-  }
+
 
 
   return (
@@ -121,19 +108,7 @@ export default function MainPage({}: Props) {
       </Typography>
       <Wrapper data={data} isLoading={isLoading} filters={filtersData} />
 
-      <Pagination 
-        count={pages}
-        onChange={(event: React.ChangeEvent, page: number)=>{
-            handlePageChange(page)
-        }}
-        sx={{
-          width: "100%",
-          margin: "20px auto",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-        />
+      
     </div>
   );
 }
