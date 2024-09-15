@@ -51,12 +51,17 @@ export default function MainPage({}: Props) {
 
   // META API "https://api.openbrewerydb.org/v1/breweries/meta"
 
-  const PER_PAGE = 24
 
+  const PER_PAGE = 200
+  const total = Math.floor(8257 / 24)
+
+  useEffect(()=>{
+    setPages(total)
+  })
 
 
   // Get data logic
-  const { data, isLoading } = useGetBreweriesAllQuery(`page=${page}&per_page=${PER_PAGE}`);
+  const { data, isLoading } = useGetBreweriesAllQuery(`&per_page=${PER_PAGE}`);
   
 
 
@@ -117,13 +122,16 @@ export default function MainPage({}: Props) {
       <Wrapper data={data} isLoading={isLoading} filters={filtersData} />
 
       <Pagination 
-        count={10}
+        count={pages}
         onChange={(event: React.ChangeEvent, page: number)=>{
             handlePageChange(page)
         }}
         sx={{
           width: "100%",
-          margin: "0 auto"
+          margin: "20px auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
         }}
         />
     </div>

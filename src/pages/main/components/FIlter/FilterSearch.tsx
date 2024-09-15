@@ -25,6 +25,7 @@ const FilterSearch = React.memo(({}: Props) =>{
   // TODO: Надо получать все данные (проще подключить автокомплит)
   const {data} = useGetBreweriesAllQuery("200")
 
+
   useEffect(() => {
     let active = true
 

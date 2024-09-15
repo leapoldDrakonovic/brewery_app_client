@@ -14,7 +14,8 @@ export const breweryApi = createApi({
         }),
         getBreweryById: builder.query<IBrewery[], string | string[]>({
             query: (ids) => `/breweries?by_ids=${ids}`
-        })
+        }),
+        // getSearchAutocomplite: builder.query<{id: string, name: string} | >
     }),
 })
 
